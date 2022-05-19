@@ -1,5 +1,6 @@
 package com.wordle;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<String> wordsList = new ArrayList<>();
+        OutputDisplay display = new OutputDisplay();
 
         Words w = new Words();
         wordsList = w.getWords();
@@ -15,6 +17,7 @@ public class Main {
         int index = (int) (Math.random() * wordsList.size());
         String solutionWord = wordsList.get(index);
 
+        display.outputIntro();
 
         int i = 0;
         Boolean correctGuess = false;
@@ -43,13 +46,7 @@ public class Main {
             }
         }
 
-        if(correctGuess){
-            System.out.println("Congrats!! Your Guess Is correct");
-        }
-        else{
-            System.out.println();
-            System.out.println("Your Guess is Over!!..The Correct Word is " + solutionWord);
-        }
+       display.outputConclusion(correctGuess,solutionWord);
 
     }
 }

@@ -43,19 +43,20 @@ public class CompareAlgo {
     public void displayWord(){
 
         //Colors
-        final String GREEN = "\033[0;32m"; //green
-        final String YELLOW = "\033[0;33m"; // yellow
+        final String GREEN = "\033[1;92m"; //green
+        final String YELLOW = "\033[1;93m"; // yellow
         final String RESET = "\033[0m"; //Text Reset
+
 
         for(int i=0;i< guessWord.size();i++){
             if(correctPosition.contains(i)){
-                System.out.print(GREEN + guessWord.get(i) + RESET );
+                System.out.print(Colors.GREEN + guessWord.get(i) + Colors.RESET );
             }
             else if(wrongPosition.contains((i))){
-                System.out.print(YELLOW + guessWord.get(i) + RESET );
+                System.out.print(Colors.YELLOW + guessWord.get(i) + Colors.RESET );
             }
             else {
-                System.out.print(guessWord.get(i));
+                System.out.print(guessWord.get(i) );
             }
         }
         System.out.println();
