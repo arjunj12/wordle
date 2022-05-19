@@ -14,7 +14,7 @@ public class Main {
         //random word Generator
         int index = (int) (Math.random() * wordsList.size());
         String solutionWord = wordsList.get(index);
-        System.out.println(solutionWord);
+
 
         int i = 0;
         Boolean correctGuess = false;
@@ -22,6 +22,7 @@ public class Main {
             CompareAlgo algo = new CompareAlgo();
 
             //Input Guess Word
+            System.out.print("Enter Guess " + (i+1) + " :" );
             Scanner sc = new Scanner(System.in);
             String guessWord = sc.nextLine();
 

@@ -6,8 +6,13 @@ import java.util.ArrayList;
 public class Words {
     ArrayList<String> getWords()  {
        ArrayList<String> wordsList = new ArrayList<>();
+
+       //Get relative File Path
+        String filePath = new File("").getAbsolutePath();
+        String path = filePath.concat("\\resources\\sgb-words.txt");
+
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("D:\\Arjun\\Programming\\wordle\\resources\\sgb-words.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(path));
             String line;
             while((line = reader.readLine()) != null) {
                 wordsList.add(line);
@@ -15,10 +20,8 @@ public class Words {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println(e);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println(e);
         }
         return wordsList;
     }
