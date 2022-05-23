@@ -6,34 +6,24 @@ public class CompareAlgo {
 
     ArrayList<Integer> correctPosition = new ArrayList<>();
     ArrayList<Integer> wrongPosition = new ArrayList<>();
-    ArrayList<Character> guessWord = new ArrayList<>();
+    String guessWord;
 
     public boolean game(String sw, String gw) {
 
-        ArrayList<Character> solutionWord = new ArrayList<>();
-        for(char ch : gw.toCharArray()) {
-            guessWord.add(ch);
-        }
+        guessWord = gw;
+        boolean[] solutionLetters = new boolean[26];
 
-        for(char ch : sw.toCharArray()) {
-            solutionWord.add(ch);
-        }
+        // input into map
+        for(int i = 0; i < sw.length(); i++)
+            solutionLetters[sw.charAt(i) - 'a'] = true;
 
-        //correct Position
-        for(int i=0;i<guessWord.size();i++){
-            if(guessWord.get(i) == solutionWord.get(i)){
+        //correct and wrong Position
+        for(int i = 0; i < gw.length(); i++){
+            if(gw.charAt(i) == sw.charAt(i)){
                 correctPosition.add(i);
             }
-        }
-
-        //wrong position
-        for(int i=0;i<guessWord.size();i++){
-            for(int j = 0;j<solutionWord.size();j++){
-                if(i != j){
-                    if(guessWord.get(i) == solutionWord.get(j)){
-                        wrongPosition.add(i);
-                    }
-                }
+            else if(solutionLetters[gw.charAt(i) - 'a']) {
+                wrongPosition.add(i);
             }
         }
 
@@ -48,15 +38,15 @@ public class CompareAlgo {
         final String RESET = "\033[0m"; //Text Reset
 
 
-        for(int i=0;i< guessWord.size();i++){
+        for(int i=0;i< guessWord.length();i++){
             if(correctPosition.contains(i)){
-                System.out.print(Colors.GREEN + guessWord.get(i) + Colors.RESET );
+                System.out.print(Colors.GREEN + guessWord.charAt(i) + Colors.RESET );
             }
             else if(wrongPosition.contains((i))){
-                System.out.print(Colors.YELLOW + guessWord.get(i) + Colors.RESET );
+                System.out.print(Colors.YELLOW + guessWord.charAt(i) + Colors.RESET );
             }
             else {
-                System.out.print(guessWord.get(i) );
+                System.out.print(guessWord.charAt(i));
             }
         }
         System.out.println();

@@ -1,6 +1,5 @@
 package com.wordle;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,7 +41,7 @@ public class Main {
             }
 
             else {
-                System.out.println("Invalid Input");
+                System.out.println("Not In Word List");
             }
         }
 
