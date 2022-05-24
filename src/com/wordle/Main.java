@@ -27,6 +27,7 @@ public class Main {
             System.out.print("Enter Guess " + (i+1) + " :" );
             Scanner sc = new Scanner(System.in);
             String guessWord = sc.nextLine();
+            guessWord = guessWord.toLowerCase();
 
             //Guess Word validity check
             AuthenticateInput input = new AuthenticateInput();
